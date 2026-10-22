@@ -457,7 +457,7 @@ def mobile_web_app():
                     <div class="flex items-center gap-3">
                         <div class="step-badge bg-blue-600 text-white">1</div>
                         <div>
-                            <h4 class="text-xs font-bold text-white">Binary Document Store Retrieval (\`docs.bin\`)</h4>
+                            <h4 class="text-xs font-bold text-white">Binary Document Store Retrieval (`docs.bin`)</h4>
                             <p class="text-[11px] text-gray-400">Zero-copy random access without relational DB overhead</p>
                         </div>
                     </div>
