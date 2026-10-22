@@ -56,7 +56,15 @@ Build a local Wikipedia search engine from scratch:
 - **Step 7 (Local Search API & Android APK Bridge)**: **Method 1 — High-Throughput FastAPI Daemon (0.0.0.0:8000) + Polished Mobile UI with Cloud APK Builder**.
   - **Live Cloud Backend URL**: `https://wikipedia-search-engine-55an.onrender.com/` (Active & Deployed on Render).
   - Laptop hosts FastAPI service exposing `/api/search`, `/api/article/{doc_id}`, `/api/stats`, and `/api/explain`.
-  - **Deep-Tech 8-Step Engine Inspector**: Dedicated interactive tab in mobile web & Android app that visualizes every internal architectural phase (DocStore binary seek, Tokenizer, Dict offset, VByte 69% decompression, BM25 math formula breakdown, Two-pointer positional phrase intersection, Min-heap candidate selection, and Dynamic Snippets).
+  - **Deep-Tech 8-Step Engine Inspector**: Dedicated interactive tab in mobile web & Android app that visualizes the exact chronological execution pipeline:
+    1. Query Input & Positional Tokenizer (`[a-z0-9]+` with 0-based word offsets)
+    2. Lexicon Binary Search (`terms.dict` $1.16\text{M}$ terms, DF, IDF, disk offsets)
+    3. VByte & Delta Decompression (`postings.bin` with **69.0% Space Savings**)
+    4. Two-Pointer Positional Phrase Verification ($pos_2 = pos_1 + 1$ eliminating false positives)
+    5. Okapi BM25 Scoring & Title Multipliers ($k_1=1.2, b=0.75$, $3.0\times$ title multiplier, $+50.0$ canonical bonus)
+    6. Top-K Min-Heap Selection ($O(N \log 10)$ bounded priority queue crowning Rank #1 winner)
+    7. Binary Document Store Direct Disk Jump (`docs.bin` O(1) seek in 0.06 ms)
+    8. Dynamic Snippet Extractor & Term Highlighting (160-char sliding window density snapping)
   - Responsive mobile web interface with dark mode, live latency badges ("⚡ 3.4ms"), dynamic snippet highlights, and full article reader.
   - Automated GitHub Actions build workflow packages the code into an installable `WikiSearch.apk` with dynamic versioning (`v1.0.${{ github.run_number }}`) and auto-publishes to GitHub Releases.
 - **Step 8 (Automated Benchmarking & Honest Numbers Rig)**: **Method 1 — Integrated One-Click Benchmark CLI (`python benchmark.py`)**.
