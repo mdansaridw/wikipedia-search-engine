@@ -14,7 +14,7 @@
 ## 🌐 Live Web Demo & Android APK
 - **Live Cloud Web Application**: **[https://wikipedia-search-engine-55an.onrender.com/](https://wikipedia-search-engine-55an.onrender.com/)**  
   *(Open this URL on any phone or laptop browser worldwide to test live search and read articles)*
-- **Direct Android APK Download**: **[Download WikiSearch.apk (v1.0.1)](https://github.com/mdansaridw/wikipedia-search-engine/releases/download/v1.0.1/WikiSearch.apk)**  
+- **Direct Android APK Download**: **[Download WikiSearch.apk](https://github.com/mdansaridw/wikipedia-search-engine/releases/latest/download/WikiSearch.apk)**  
   *(Pre-configured to connect automatically to the live Render cloud backend)*
 
 ---
