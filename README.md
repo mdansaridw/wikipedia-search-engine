@@ -1,18 +1,21 @@
 # 🏆 Wikipedia Local Search Engine (HCL Hackathon)
 
 > **Can you find the right page among millions, in milliseconds?**  
-> A 100% custom-built, zero-external-dependency local Wikipedia search engine engineered from first principles. Features a custom **Positional Inverted Index**, **BM25 ranking with title weighting**, **exact-phrase sequence verification**, and **Tier D Delta-VByte compression**, served to an Android mobile client over local Wi-Fi.
+> A 100% custom-built, zero-external-dependency local Wikipedia search engine engineered from first principles. Features a custom **Positional Inverted Index**, **BM25 ranking with title weighting**, **exact-phrase sequence verification**, and **Tier D Delta-VByte compression**, served to an Android mobile client over local Wi-Fi or public Cloud.
 
-[![Download Android APK](https://img.shields.io/badge/Android%20APK-Download%20WikiSearch.apk-brightgreen?logo=android)](../../releases/latest)
+[![Live Cloud Demo](https://img.shields.io/badge/Live%20Demo-Render%20Cloud-blue?logo=render)](https://wikipedia-search-engine-55an.onrender.com/)
+[![Download Android APK](https://img.shields.io/badge/Android%20APK-Download%20WikiSearch.apk-brightgreen?logo=android)](https://github.com/mdansaridw/wikipedia-search-engine/releases/download/v1.0.1/WikiSearch.apk)
 [![Hit@10 Score](https://img.shields.io/badge/Hit%4010-99.0%25-blue)]()
 [![MRR Score](https://img.shields.io/badge/MRR-0.990-purple)]()
 [![Tier D Compression](https://img.shields.io/badge/VByte%20Compression-69.0%25-success)]()
 
 ---
 
-## 📱 Direct Android APK Download
-Anyone (including judges) can download the installable APK directly from the **[Releases](../../releases/latest)** page:
-- **Download Link**: Click **[WikiSearch.apk](../../releases/latest/download/WikiSearch.apk)** to install directly on physical Android phones or emulators.
+## 🌐 Live Web Demo & Android APK
+- **Live Cloud Web Application**: **[https://wikipedia-search-engine-55an.onrender.com/](https://wikipedia-search-engine-55an.onrender.com/)**  
+  *(Open this URL on any phone or laptop browser worldwide to test live search and read articles)*
+- **Direct Android APK Download**: **[Download WikiSearch.apk (v1.0.1)](https://github.com/mdansaridw/wikipedia-search-engine/releases/download/v1.0.1/WikiSearch.apk)**  
+  *(Pre-configured to connect automatically to the live Render cloud backend)*
 
 ---
 
