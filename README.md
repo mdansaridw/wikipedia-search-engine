@@ -96,21 +96,21 @@ python start_server.py
 
 ---
 
-## 4. Mobile Client & Android APK Connection
+## 4. 📱 100% Native Android Client & APK
 
-1. Connect your Android phone to the **same Wi-Fi network** (or phone hotspot) as your laptop.
-2. Start the backend: `python start_server.py`.
-3. Open your mobile browser or the Android APK and navigate to:
-   ```
-   http://<your-laptop-ip>:8000
-   ```
-   *(For example: `http://172.31.99.120:8000`)*
-4. Search any topic, toggle between **BM25 Keywords** and **"Exact Phrase"**, view live millisecond execution badges, and tap any card to read the full article!
+The repository includes a modern, sleek, white-themed native Android client built with Material 3:
+- **Download APK**: [Download WikiSearch.apk (Latest)](https://github.com/mdansaridw/wikipedia-search-engine/releases/latest/download/WikiSearch.apk)
+- **Features**:
+  - Dual tabs: **Search Results** with markdown keyword highlights & **8-Step Engine Inspector** with live telemetry.
+  - Full native **Article Reader** with reading time estimate and Wikipedia deep-link.
+  - **Engine Statistics BottomSheet**: live 99.0% Hit@10, 0.990 MRR, 73.5 ms p50, and 69.0% VByte compression stats.
+  - **Cloud & Local Wi-Fi Switcher**: Pre-configured to auto-connect to the live Render cloud backend (`https://wikipedia-search-engine-55an.onrender.com`), with one-tap toggle to local Wi-Fi (`http://<laptop-ip>:8000`) in Settings.
 
 ---
 
 ## 5. Automated Android APK Build (GitHub Actions)
 
-The repository includes a ready-to-use GitHub Actions workflow [`.github/workflows/build-apk.yml`](./.github/workflows/build-apk.yml):
-1. Push this project to GitHub.
-2. The workflow automatically launches Ubuntu, sets up JDK 17 and Android SDK 34, runs `./gradlew assembleDebug`, and publishes the installable `WikiSearch.apk` file directly under GitHub Actions artifacts.
+The repository includes an automated GitHub Actions CI/CD workflow [`.github/workflows/build-apk.yml`](./.github/workflows/build-apk.yml):
+1. Runs on Ubuntu runner with JDK 17 and Gradle 8.4.
+2. Compiles the native debug APK via `gradle assembleDebug`.
+3. Auto-publishes the APK to GitHub Releases with monotonic version tags (`v1.0.X`) and sets it as the latest release.
