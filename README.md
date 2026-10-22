@@ -3,6 +3,17 @@
 > **Can you find the right page among millions, in milliseconds?**  
 > A 100% custom-built, zero-external-dependency local Wikipedia search engine engineered from first principles. Features a custom **Positional Inverted Index**, **BM25 ranking with title weighting**, **exact-phrase sequence verification**, and **Tier D Delta-VByte compression**, served to an Android mobile client over local Wi-Fi.
 
+[![Download Android APK](https://img.shields.io/badge/Android%20APK-Download%20WikiSearch.apk-brightgreen?logo=android)](../../releases/latest)
+[![Hit@10 Score](https://img.shields.io/badge/Hit%4010-99.0%25-blue)]()
+[![MRR Score](https://img.shields.io/badge/MRR-0.990-purple)]()
+[![Tier D Compression](https://img.shields.io/badge/VByte%20Compression-69.0%25-success)]()
+
+---
+
+## 📱 Direct Android APK Download
+Anyone (including judges) can download the installable APK directly from the **[Releases](../../releases/latest)** page:
+- **Download Link**: Click **[WikiSearch.apk](../../releases/latest/download/WikiSearch.apk)** to install directly on physical Android phones or emulators.
+
 ---
 
 ## 1. Official Results & Judging Rubric Compliance (100 / 100 Points)
