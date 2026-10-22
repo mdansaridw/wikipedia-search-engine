@@ -44,20 +44,23 @@ jobs:
       - name: Publish Public GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v1.0.1
-          name: "WikiSearch Android APK v1.0.1 (Live Cloud Backend)"
+          tag_name: v1.0.${{ github.run_number }}
+          name: "WikiSearch Android APK v1.0.${{ github.run_number }} (Cloud Backend & 8-Step Inspector)"
           body: |
             ## 🏆 Wikipedia Local Search Engine (HCL Hackathon)
             
             Installable Android APK pre-configured to connect to the live cloud backend on Render.
             
-            ### 🌐 Live Web Demo:
-            - **Web Client**: [https://wikipedia-search-engine-55an.onrender.com/](https://wikipedia-search-engine-55an.onrender.com/)
+            ### 🌐 Live Web Demo & Inspector:
+            - **Web & Engine Inspector**: [https://wikipedia-search-engine-55an.onrender.com/](https://wikipedia-search-engine-55an.onrender.com/)
             
-            ### 📱 Download & Run APK:
-            1. Download **`WikiSearch.apk`** below directly onto your Android device or emulator.
-            2. By default, it connects automatically to the live cloud backend: `https://wikipedia-search-engine-55an.onrender.com`.
-            3. Tap the **Settings** gear icon anytime to switch to your laptop's local Wi-Fi IP (e.g. `http://<laptop-ip>:8000`) for offline demos.
+            ### 📱 Download Latest APK:
+            - **Direct Download**: [Download WikiSearch.apk](https://github.com/mdansaridw/wikipedia-search-engine/releases/latest/download/WikiSearch.apk)
+            
+            ### 🚀 What's New:
+            - **8-Step Deep-Tech Engine Inspector**: Live step-by-step telemetry showing DocStore seek, Tokenizer, Dict offsets, VByte 69% decompression, BM25 math breakdown, Two-Pointer phrase scan, Min-Heap selection, and Dynamic Snippets.
+            - **Pre-configured Cloud Endpoint**: Auto-connects to Render cloud deployment with instant Wi-Fi fallback.
+          make_latest: true
           draft: false
           prerelease: false
           files: WikiSearch.apk

@@ -55,9 +55,10 @@ Build a local Wikipedia search engine from scratch:
   - Supports multi-word phrases of arbitrary length (e.g., `"theory of relativity"`) in microseconds with zero false positives.
 - **Step 7 (Local Search API & Android APK Bridge)**: **Method 1 — High-Throughput FastAPI Daemon (0.0.0.0:8000) + Polished Mobile UI with Cloud APK Builder**.
   - **Live Cloud Backend URL**: `https://wikipedia-search-engine-55an.onrender.com/` (Active & Deployed on Render).
-  - Laptop hosts FastAPI service exposing `/search`, `/article/{id}`, and `/benchmarks/stats`.
+  - Laptop hosts FastAPI service exposing `/api/search`, `/api/article/{doc_id}`, `/api/stats`, and `/api/explain`.
+  - **Deep-Tech 8-Step Engine Inspector**: Dedicated interactive tab in mobile web & Android app that visualizes every internal architectural phase (DocStore binary seek, Tokenizer, Dict offset, VByte 69% decompression, BM25 math formula breakdown, Two-pointer positional phrase intersection, Min-heap candidate selection, and Dynamic Snippets).
   - Responsive mobile web interface with dark mode, live latency badges ("⚡ 3.4ms"), dynamic snippet highlights, and full article reader.
-  - Automated GitHub Actions build workflow packages the code into an installable `WikiSearch.apk` pre-configured to point to the live cloud backend.
+  - Automated GitHub Actions build workflow packages the code into an installable `WikiSearch.apk` with dynamic versioning (`v1.0.${{ github.run_number }}`) and auto-publishes to GitHub Releases.
 - **Step 8 (Automated Benchmarking & Honest Numbers Rig)**: **Method 1 — Integrated One-Click Benchmark CLI (`python benchmark.py`)**.
   - Evaluates 100 ground-truth Wikipedia test queries for **Hit@10** and **MRR (Mean Reciprocal Rank)**.
   - Captures microsecond-resolution query latency distributions, calculating exact **p50 and p95 latency**.
