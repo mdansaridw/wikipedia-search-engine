@@ -58,9 +58,5 @@ jobs:
           draft: false
           prerelease: false
           files: WikiSearch.apk
-            4. Open **WikiSearch** on your phone. If prompted, confirm your laptop's local IP (e.g. `http://<laptop-ip>:8000`).
-          draft: false
-          prerelease: false
-          files: WikiSearch.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
