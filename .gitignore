@@ -26,3 +26,11 @@ mobile/android/.gradle/
 mobile/android/build/
 mobile/android/app/build/
 mobile/android/local.properties
+native_ui/WikiSearch-Project/.gradle/
+native_ui/WikiSearch-Project/.kotlin/
+native_ui/WikiSearch-Project/.agent/
+native_ui/WikiSearch-Project/.agents/
+native_ui/WikiSearch-Project/.gemini/
+native_ui/WikiSearch-Project/build/
+native_ui/WikiSearch-Project/app/build/
+native_ui/WikiSearch-Project/local.properties

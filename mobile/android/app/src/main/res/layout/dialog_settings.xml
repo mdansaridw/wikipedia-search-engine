@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/screen_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_20">
+
+        <!-- Title -->
+        <TextView
+            style="@style/TextAppearance.WikiSearch.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_title"
+            android:layout_marginBottom="@dimen/spacing_16" />
+
+        <!-- Section 1: Backend URL -->
+        <TextView
+            style="@style/TextAppearance.WikiSearch.Metadata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_backend_section"
+            android:layout_marginBottom="@dimen/spacing_8" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/corner_radius_card"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/border_separator"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/primary_surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_16">
+
+                <RadioGroup
+                    android:id="@+id/group_backend"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/radio_backend_cloud"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/backend_cloud"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@color/primary_text"
+                        android:buttonTint="@color/primary_accent" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginBottom="@dimen/spacing_8"
+                        style="@style/TextAppearance.WikiSearch.Monospace"
+                        android:text="https://wikipedia-search-engine-55an.onrender.com" />
+
+                    <RadioButton
+                        android:id="@+id/radio_backend_local"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/backend_local"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@color/primary_text"
+                        android:buttonTint="@color/primary_accent" />
+                </RadioGroup>
+
+                <!-- Custom URL Input -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_input_custom_url"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="@dimen/spacing_4"
+                    android:hint="Custom Server Base URL"
+                    app:boxStrokeColor="@color/primary_accent"
+                    app:hintTextColor="@color/primary_accent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_custom_url"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="monospace"
+                        android:textSize="13sp"
+                        android:inputType="textUri"
+                        android:singleLine="true"
+                        android:textColor="@color/primary_text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Test Connection Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/spacing_12">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_test_connection"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/test_connection"
+                        android:textColor="@color/primary_accent"
+                        app:strokeColor="@color/primary_accent"
+                        app:cornerRadius="@dimen/corner_radius_pill" />
+
+                    <TextView
+                        android:id="@+id/text_test_status"
+                        style="@style/TextAppearance.WikiSearch.Metadata"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/spacing_12"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        tools:text="Connected (73 ms)" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Section 2: Theme Selection -->
+        <TextView
+            style="@style/TextAppearance.WikiSearch.Metadata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_theme_section"
+            android:layout_marginTop="@dimen/spacing_20"
+            android:layout_marginBottom="@dimen/spacing_8" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/corner_radius_card"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/border_separator"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/primary_surface">
+
+            <RadioGroup
+                android:id="@+id/group_theme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_16">
+
+                <RadioButton
+                    android:id="@+id/radio_theme_system"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/theme_system"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/primary_text"
+                    android:buttonTint="@color/primary_accent" />
+
+                <RadioButton
+                    android:id="@+id/radio_theme_light"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/theme_light"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/primary_text"
+                    android:buttonTint="@color/primary_accent" />
+
+                <RadioButton
+                    android:id="@+id/radio_theme_dark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/theme_dark"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/primary_text"
+                    android:buttonTint="@color/primary_accent" />
+            </RadioGroup>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Bottom Buttons: Save and Cancel -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:layout_marginTop="@dimen/spacing_24">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_settings_cancel"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_cancel"
+                android:textColor="@color/secondary_text" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_settings_save"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_8"
+                android:backgroundTint="@color/primary_accent"
+                android:text="@string/settings_save"
+                android:textColor="@color/white"
+                app:cornerRadius="@dimen/corner_radius_pill" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

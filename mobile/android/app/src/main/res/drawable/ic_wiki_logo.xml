@@ -1,0 +1,14 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp"
+    android:height="40dp"
+    android:viewportWidth="40"
+    android:viewportHeight="40">
+    <!-- Rounded Background Box -->
+    <path
+        android:fillColor="@color/soft_mint"
+        android:pathData="M8,0 L32,0 A8,8 0 0,1 40,8 L40,32 A8,8 0 0,1 32,40 L8,40 A8,8 0 0,1 0,32 L0,8 A8,8 0 0,1 8,0 Z"/>
+    <!-- Stylized W for WikiSearch -->
+    <path
+        android:fillColor="@color/primary_accent"
+        android:pathData="M9,12 L13.5,28 L17.5,14 L22.5,14 L26.5,28 L31,12 L34.5,12 L28.5,31 L24.5,31 L20,17.5 L15.5,31 L11.5,31 L5.5,12 Z"/>
+</vector>

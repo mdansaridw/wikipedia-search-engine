@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark Application Theme -->
+    <style name="Theme.WikiSearch" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Brand Colors -->
+        <item name="colorPrimary">@color/primary_accent</item>
+        <item name="colorPrimaryVariant">@color/pressed_accent</item>
+        <item name="colorOnPrimary">@color/screen_background</item>
+        <item name="colorSecondary">@color/soft_mint</item>
+        <item name="colorSecondaryVariant">@color/primary_accent</item>
+        <item name="colorOnSecondary">@color/primary_text</item>
+
+        <!-- Canvas and Surface -->
+        <item name="android:windowBackground">@color/screen_background</item>
+        <item name="colorSurface">@color/primary_surface</item>
+        <item name="colorOnSurface">@color/primary_text</item>
+
+        <!-- Status Bar -->
+        <item name="android:statusBarColor">@color/screen_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- Card View Styles -->
+        <item name="materialCardViewStyle">@style/Widget.WikiSearch.Card</item>
+    </style>
+</resources>

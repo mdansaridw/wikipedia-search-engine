@@ -45,21 +45,24 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v1.0.${{ github.run_number }}
-          name: "WikiSearch Android APK v1.0.${{ github.run_number }} (Cloud Backend & 8-Step Inspector)"
+          name: "WikiSearch Native Android APK v1.0.${{ github.run_number }} (Material 3 White Theme & 8-Step Inspector)"
           body: |
             ## 🏆 Wikipedia Local Search Engine (HCL Hackathon)
             
-            Installable Android APK pre-configured to connect to the live cloud backend on Render.
+            100% Native Android APK built with Material 3, sleek white theme, smooth animations, and dual-tab 8-Step Engine Inspector.
             
             ### 🌐 Live Web Demo & Inspector:
             - **Web & Engine Inspector**: [https://wikipedia-search-engine-55an.onrender.com/](https://wikipedia-search-engine-55an.onrender.com/)
             
-            ### 📱 Download Latest APK:
+            ### 📱 Download Latest Native APK:
             - **Direct Download**: [Download WikiSearch.apk](https://github.com/mdansaridw/wikipedia-search-engine/releases/latest/download/WikiSearch.apk)
             
-            ### 🚀 What's New:
-            - **8-Step Deep-Tech Engine Inspector**: Live step-by-step telemetry showing DocStore seek, Tokenizer, Dict offsets, VByte 69% decompression, BM25 math breakdown, Two-Pointer phrase scan, Min-Heap selection, and Dynamic Snippets.
-            - **Pre-configured Cloud Endpoint**: Auto-connects to Render cloud deployment with instant Wi-Fi fallback.
+            ### 🚀 What's New in This Release:
+            - **100% Native Android Client**: Replaced WebView with native Android components (`RecyclerView`, `CardView`, `BottomSheetDialogFragment`).
+            - **Modern Sleek White Theme**: Crisp light mode with Material 3 styling, color-coded step badges, and rich dark mode support.
+            - **8-Step Deep-Tech Engine Inspector**: Live native cards showing DocStore seek, Tokenizer, Dict offsets, VByte 69% decompression, BM25 math breakdown, Two-Pointer phrase scan, Min-Heap selection, and Dynamic Snippets.
+            - **Built-in Full Article Reader**: Clean reading canvas with estimated reading time and direct Wikipedia link.
+            - **Cloud & Local Wi-Fi Switcher**: Pre-configured to auto-connect to Render cloud deployment with instant Wi-Fi fallback in Settings.
           make_latest: true
           draft: false
           prerelease: false

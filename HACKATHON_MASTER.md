@@ -223,8 +223,8 @@ $$\text{BM25}(D, Q) = \sum_{i=1}^n \text{IDF}(q_i) \cdot \frac{f(q_i, D) \cdot (
   - Daemon binds to `0.0.0.0:8000` over local Wi-Fi.
   - Endpoints: `GET /api/search`, `GET /api/article/{doc_id}`, `GET /api/stats`.
   - Built-in responsive Mobile Web UI with dark mode, live latency badges, snippet highlights, and article reader.
-- [x] Deliver installable Android APK with local Wi-Fi connection and clean UI:
-  - Android native project created in `mobile/android/` with AndroidManifest, MainActivity, layouts, and Gradle scripts.
-  - GitHub Actions automated cloud build workflow configured in `.github/workflows/build-apk.yml`.
-  - One-click launcher provided in `start_server.py`.
+- [x] Deliver 100% Native Android APK (White Themed Material 3, Smooth Animations, Dual Tabs):
+  - Pure native Android implementation in `mobile/android/`: `MainActivity`, `SearchResultAdapter`, `EngineInspectorAdapter`, `ArticleReaderActivity`, `StatsBottomSheet`, `SettingsDialogFragment`.
+  - Rich features: Dual tabs ("Search Results" and "8-Step Engine Inspector"), dynamic markdown keyword highlights, server configuration dialog with instant cloud (`wikipedia-search-engine-55an.onrender.com`) and local Wi-Fi toggle.
+  - Automated GitHub Actions build workflow packages and publishes `WikiSearch.apk` with dynamic versioning (`v1.0.${{ github.run_number }}`).
 - [x] Write 1-page design report and reproducible README (`README.md` & `BENCHMARK_REPORT.md` complete)

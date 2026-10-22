@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_search_box"
+    android:padding="@dimen/spacing_20">
+
+    <!-- Header: Title, Refresh Button, Close -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="@dimen/spacing_16">
+
+        <TextView
+            style="@style/TextAppearance.WikiSearch.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/stats_title" />
+
+        <ImageButton
+            android:id="@+id/btn_refresh_stats"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/stats_refresh"
+            android:src="@drawable/ic_refresh"
+            app:tint="@color/primary_accent" />
+    </LinearLayout>
+
+    <!-- Loading State -->
+    <LinearLayout
+        android:id="@+id/layout_stats_loading"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:indeterminateTint="@color/primary_accent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_12"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="14sp"
+            android:textColor="@color/secondary_text"
+            android:text="Fetching engine statistics…" />
+    </LinearLayout>
+
+    <!-- Error State -->
+    <LinearLayout
+        android:id="@+id/layout_stats_error"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/text_stats_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="sans-serif"
+            android:textSize="14sp"
+            android:textColor="@color/error_foreground"
+            tools:text="Failed to connect to search engine." />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_retry_stats"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_12"
+            android:backgroundTint="@color/primary_accent"
+            android:text="@string/error_retry"
+            android:textColor="@color/white"
+            app:cornerRadius="@dimen/corner_radius_pill" />
+    </LinearLayout>
+
+    <!-- Stats Metric Cards Container -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_stats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Grid Row 1: Total Articles & Vocabulary Size -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
+
+                <!-- Metric: Total Articles -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="@dimen/spacing_4"
+                    app:cardCornerRadius="@dimen/corner_radius_badge"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/border_separator"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@color/secondary_surface">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_12">
+
+                        <TextView
+                            style="@style/TextAppearance.WikiSearch.Metadata"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/stats_total_articles" />
+
+                        <TextView
+                            android:id="@+id/text_stat_articles"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_4"
+                            android:fontFamily="sans-serif-medium"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/primary_text"
+                            tools:text="270,509" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Metric: Vocabulary Size -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/spacing_4"
+                    app:cardCornerRadius="@dimen/corner_radius_badge"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/border_separator"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@color/secondary_surface">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_12">
+
+                        <TextView
+                            style="@style/TextAppearance.WikiSearch.Metadata"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/stats_vocabulary_size" />
+
+                        <TextView
+                            android:id="@+id/text_stat_vocab"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_4"
+                            android:fontFamily="sans-serif-medium"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/primary_text"
+                            tools:text="1,160,628" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- Grid Row 2: Hit@10 & MRR -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/spacing_8"
+                android:baselineAligned="false">
+
+                <!-- Metric: Hit@10 -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="@dimen/spacing_4"
+                    app:cardCornerRadius="@dimen/corner_radius_badge"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/border_separator"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@color/secondary_surface">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_12">
+
+                        <TextView
+                            style="@style/TextAppearance.WikiSearch.Metadata"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/stats_hit_at_10" />
+
+                        <TextView
+                            android:id="@+id/text_stat_hit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_4"
+                            android:fontFamily="sans-serif-medium"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/primary_accent"
+                            tools:text="99.0%" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Metric: MRR -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/spacing_4"
+                    app:cardCornerRadius="@dimen/corner_radius_badge"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/border_separator"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@color/secondary_surface">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_12">
+
+                        <TextView
+                            style="@style/TextAppearance.WikiSearch.Metadata"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/stats_mrr" />
+
+                        <TextView
+                            android:id="@+id/text_stat_mrr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_4"
+                            android:fontFamily="sans-serif-medium"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/primary_accent"
+                            tools:text="0.990" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- Grid Row 3: p50 & p95 Latency -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/spacing_8"
+                android:baselineAligned="false">
+
+                <!-- Metric: p50 -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="@dimen/spacing_4"
+                    app:cardCornerRadius="@dimen/corner_radius_badge"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/border_separator"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@color/secondary_surface">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_12">
+
+                        <TextView
+                            style="@style/TextAppearance.WikiSearch.Metadata"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/stats_p50" />
+
+                        <TextView
+                            android:id="@+id/text_stat_p50"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_4"
+                            android:fontFamily="monospace"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/primary_text"
+                            tools:text="73.5 ms" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Metric: p95 -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/spacing_4"
+                    app:cardCornerRadius="@dimen/corner_radius_badge"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/border_separator"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@color/secondary_surface">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_12">
+
+                        <TextView
+                            style="@style/TextAppearance.WikiSearch.Metadata"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/stats_p95" />
+
+                        <TextView
+                            android:id="@+id/text_stat_p95"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_4"
+                            android:fontFamily="monospace"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/primary_text"
+                            tools:text="246.1 ms" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- Row 4: Compression Savings & Index Footprint -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_8"
+                app:cardCornerRadius="@dimen/corner_radius_badge"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/border_separator"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/secondary_surface">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_12">
+
+                    <TextView
+                        style="@style/TextAppearance.WikiSearch.Metadata"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stats_compression" />
+
+                    <TextView
+                        android:id="@+id/text_stat_compression"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_4"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/success_foreground"
+                        tools:text="69.0% (Delta + VByte)" />
+
+                    <TextView
+                        android:id="@+id/text_stat_index_size"
+                        style="@style/TextAppearance.WikiSearch.Metadata"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_4"
+                        tools:text="Total Index Size: 200.1 MB (Postings: 169.8 MB, Docs: 523.7 MB)" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

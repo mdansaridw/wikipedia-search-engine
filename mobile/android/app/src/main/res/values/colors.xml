@@ -1,6 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#2563EB</color>
-    <color name="primary_dark">#1D4ED8</color>
-    <color name="accent">#38BDF8</color>
-    <color name="background">#0B0F19</color>
+    <!-- Light Theme Color Tokens: Mint & Graphite -->
+    <color name="screen_background">#F2F7F5</color>
+    <color name="primary_surface">#FFFFFF</color>
+    <color name="secondary_surface">#EAF2EE</color>
+    <color name="primary_accent">#459985</color>
+    <color name="pressed_accent">#347C6C</color>
+    <color name="soft_mint">#DDF1EA</color>
+    <color name="primary_text">#243631</color>
+    <color name="secondary_text">#687B74</color>
+    <color name="tertiary_text">#8B9B94</color>
+    <color name="border_separator">#DFEAE5</color>
+    <color name="success_background">#DDF3E5</color>
+    <color name="success_foreground">#267653</color>
+    <color name="error_background">#FBE8E8</color>
+    <color name="error_foreground">#B63F48</color>
+    <color name="warning_background">#FFF0D8</color>
+    <color name="warning_foreground">#92651C</color>
+
+    <!-- 8-Step Engine Inspector Accent System (Light Theme) -->
+    <color name="step1_badge_bg">#E4F2FF</color>
+    <color name="step1_fg">#2878B8</color>
+
+    <color name="step2_badge_bg">#EEE8FF</color>
+    <color name="step2_fg">#7150B5</color>
+
+    <color name="step3_badge_bg">#DDF3E5</color>
+    <color name="step3_fg">#267653</color>
+
+    <color name="step4_badge_bg">#E7E9FF</color>
+    <color name="step4_fg">#4F59A8</color>
+
+    <color name="step5_badge_bg">#FFF0D9</color>
+    <color name="step5_fg">#98631B</color>
+
+    <color name="step6_badge_bg">#FCE6EC</color>
+    <color name="step6_fg">#B44366</color>
+
+    <color name="step7_badge_bg">#DDF4F6</color>
+    <color name="step7_fg">#247A88</color>
+
+    <color name="step8_badge_bg">#DDF2ED</color>
+    <color name="step8_fg">#277B69</color>
+
+    <!-- Interactive & Common Colors -->
+    <color name="ripple_light">#1A459985</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
 </resources>

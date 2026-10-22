@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base Application Theme -->
+    <style name="Theme.WikiSearch" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Brand Colors -->
+        <item name="colorPrimary">@color/primary_accent</item>
+        <item name="colorPrimaryVariant">@color/pressed_accent</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/soft_mint</item>
+        <item name="colorSecondaryVariant">@color/primary_accent</item>
+        <item name="colorOnSecondary">@color/primary_text</item>
+
+        <!-- Canvas and Surface -->
+        <item name="android:windowBackground">@color/screen_background</item>
+        <item name="colorSurface">@color/primary_surface</item>
+        <item name="colorOnSurface">@color/primary_text</item>
+
+        <!-- Status Bar -->
+        <item name="android:statusBarColor">@color/screen_background</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Card View Styles -->
+        <item name="materialCardViewStyle">@style/Widget.WikiSearch.Card</item>
+    </style>
+
+    <!-- Custom View Styles -->
+    <style name="Widget.WikiSearch.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/primary_surface</item>
+        <item name="cardCornerRadius">@dimen/corner_radius_card</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/border_separator</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="rippleColor">@color/ripple_light</item>
+    </style>
+
+    <style name="TextAppearance.WikiSearch.Title" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="TextAppearance.WikiSearch.ArticleTitle" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="TextAppearance.WikiSearch.ResultTitle" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="TextAppearance.WikiSearch.Body" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
+        <item name="android:textColor">@color/secondary_text</item>
+    </style>
+
+    <style name="TextAppearance.WikiSearch.ArticleBody" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingMultiplier">1.5</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="TextAppearance.WikiSearch.Metadata" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/tertiary_text</item>
+    </style>
+
+    <style name="TextAppearance.WikiSearch.Monospace" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/primary_accent</item>
+    </style>
+</resources>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/spacing_16"
+    android:layout_marginEnd="@dimen/spacing_16"
+    android:layout_marginTop="@dimen/spacing_6"
+    android:layout_marginBottom="@dimen/spacing_6"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="@dimen/corner_radius_card"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/border_separator"
+    app:strokeWidth="1dp"
+    app:cardBackgroundColor="@color/primary_surface"
+    app:rippleColor="@color/ripple_light">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_16">
+
+        <!-- Top Row: Rank Badge, Title, BM25 Score Badge -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Rank Badge -->
+            <TextView
+                android:id="@+id/text_result_rank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rank_badge"
+                android:paddingStart="@dimen/spacing_8"
+                android:paddingEnd="@dimen/spacing_8"
+                android:paddingTop="@dimen/spacing_2"
+                android:paddingBottom="@dimen/spacing_2"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="12sp"
+                android:textColor="@color/secondary_text"
+                tools:text="#1" />
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/text_result_title"
+                style="@style/TextAppearance.WikiSearch.ResultTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/spacing_12"
+                android:layout_marginEnd="@dimen/spacing_8"
+                android:ellipsize="end"
+                android:maxLines="2"
+                tools:text="Solar System" />
+
+            <!-- BM25 Score Badge -->
+            <TextView
+                android:id="@+id/text_result_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_score_badge"
+                android:paddingStart="@dimen/spacing_8"
+                android:paddingEnd="@dimen/spacing_8"
+                android:paddingTop="@dimen/spacing_4"
+                android:paddingBottom="@dimen/spacing_4"
+                android:fontFamily="monospace"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_accent"
+                tools:text="146.57" />
+        </LinearLayout>
+
+        <!-- Snippet Preview -->
+        <TextView
+            android:id="@+id/text_result_snippet"
+            style="@style/TextAppearance.WikiSearch.Body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_8"
+            android:ellipsize="end"
+            android:maxLines="4"
+            tools:text="The Solar System is a gravitationally bound system of objects that are held together by gravity, with the Sun in the center..." />
+
+        <!-- Tap Affordance -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/spacing_12">
+
+            <TextView
+                android:id="@+id/text_doc_id"
+                style="@style/TextAppearance.WikiSearch.Metadata"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:text="Doc ID: #364" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="12sp"
+                android:textColor="@color/primary_accent"
+                android:text="Read article →" />
+        </LinearLayout>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

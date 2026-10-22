@@ -1,60 +1,542 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0b0f19">
+    android:background="@color/screen_background">
 
-    <!-- Top Action Bar -->
-    <RelativeLayout
-        android:id="@+id/topBar"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:background="#111827"
-        android:paddingHorizontal="16dp">
+        android:layout_height="wrap_content"
+        android:background="@color/screen_background"
+        app:elevation="0dp">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <!-- Top Header Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="WikiSearch Client"
-            android:textColor="#ffffff"
-            android:textSize="17sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/spacing_16"
+            android:paddingEnd="@dimen/spacing_16"
+            android:paddingTop="@dimen/spacing_12"
+            android:paddingBottom="@dimen/spacing_8">
 
-        <ImageButton
-            android:id="@+id/btnSettings"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_menu_preferences"
-            android:contentDescription="Server IP Settings" />
-    </RelativeLayout>
+            <!-- Logo -->
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_wiki_logo"
+                android:contentDescription="@string/app_name" />
 
-    <!-- Progress Bar -->
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:layout_below="@id/topBar"
-        android:indeterminate="false"
-        android:max="100"
-        android:progressDrawable="@android:drawable/progress_horizontal"
-        android:visibility="gone" />
+            <!-- App Title & Subtitle -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/spacing_12">
 
-    <!-- Swipe to Refresh Container -->
+                <TextView
+                    style="@style/TextAppearance.WikiSearch.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:textSize="20sp" />
+
+                <TextView
+                    style="@style/TextAppearance.WikiSearch.Metadata"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_tagline"
+                    android:textColor="@color/secondary_text" />
+            </LinearLayout>
+
+            <!-- Engine Status Badge -->
+            <TextView
+                android:id="@+id/text_engine_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_status_badge"
+                android:paddingStart="@dimen/spacing_8"
+                android:paddingEnd="@dimen/spacing_8"
+                android:paddingTop="@dimen/spacing_2"
+                android:paddingBottom="@dimen/spacing_2"
+                android:layout_marginEnd="@dimen/spacing_8"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="11sp"
+                android:textColor="@color/success_foreground"
+                android:text="@string/status_ready" />
+
+            <!-- Stats Button -->
+            <ImageButton
+                android:id="@+id/btn_stats"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/stats_title"
+                android:src="@drawable/ic_stats"
+                app:tint="@color/primary_text" />
+
+            <!-- Settings Button -->
+            <ImageButton
+                android:id="@+id/btn_settings"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/settings_title"
+                android:src="@drawable/ic_settings"
+                app:tint="@color/primary_text" />
+        </LinearLayout>
+
+        <!-- Search Bar Section -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_16"
+            android:layout_marginEnd="@dimen/spacing_16"
+            android:layout_marginTop="@dimen/spacing_4"
+            android:layout_marginBottom="@dimen/spacing_8">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/search_box_height"
+                android:background="@drawable/bg_search_box"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/spacing_12"
+                android:paddingEnd="@dimen/spacing_8">
+
+                <!-- Search Icon -->
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_search"
+                    android:contentDescription="@string/search_hint"
+                    app:tint="@color/secondary_text" />
+
+                <!-- Search Input Field -->
+                <EditText
+                    android:id="@+id/edit_search"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/spacing_8"
+                    android:layout_marginEnd="@dimen/spacing_4"
+                    android:background="@null"
+                    android:hint="@string/search_hint"
+                    android:textColorHint="@color/tertiary_text"
+                    android:textColor="@color/primary_text"
+                    android:fontFamily="sans-serif"
+                    android:textSize="15sp"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+                <!-- Loading Spinner in search bar -->
+                <ProgressBar
+                    android:id="@+id/progress_search_bar"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="@dimen/spacing_4"
+                    android:indeterminateTint="@color/primary_accent"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <!-- Clear Text Button -->
+                <ImageButton
+                    android:id="@+id/btn_clear_search"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/clear_search"
+                    android:src="@drawable/ic_clear"
+                    app:tint="@color/secondary_text"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- Search Mode Selector Pills (BM25 Keywords vs Exact Phrase) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/spacing_16"
+            android:paddingEnd="@dimen/spacing_16"
+            android:layout_marginBottom="@dimen/spacing_6">
+
+            <!-- Pill Container -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:background="@drawable/bg_segmented_container"
+                android:orientation="horizontal"
+                android:padding="2dp">
+
+                <!-- Mode 1: BM25 Keywords -->
+                <TextView
+                    android:id="@+id/btn_mode_keyword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/bg_segment_active"
+                    android:paddingStart="@dimen/spacing_12"
+                    android:paddingEnd="@dimen/spacing_12"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:text="@string/mode_keyword"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <!-- Mode 2: Exact Phrase -->
+                <TextView
+                    android:id="@+id/btn_mode_phrase"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/bg_segment_inactive"
+                    android:paddingStart="@dimen/spacing_12"
+                    android:paddingEnd="@dimen/spacing_12"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="12sp"
+                    android:textColor="@color/secondary_text"
+                    android:text="@string/mode_phrase"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Latency and Result Summary Pill (Own Dedicated Row) -->
+        <LinearLayout
+            android:id="@+id/layout_search_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/spacing_16"
+            android:paddingEnd="@dimen/spacing_16"
+            android:layout_marginBottom="@dimen/spacing_6"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/text_search_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_pill_badge"
+                android:paddingStart="@dimen/spacing_12"
+                android:paddingEnd="@dimen/spacing_12"
+                android:paddingTop="@dimen/spacing_4"
+                android:paddingBottom="@dimen/spacing_4"
+                android:fontFamily="monospace"
+                android:textSize="11sp"
+                android:textColor="@color/primary_accent"
+                tools:text="⚡ 3636.8 ms · 2,662 hits" />
+        </LinearLayout>
+
+        <!-- Quick Topic Chips Row -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:paddingStart="@dimen/spacing_16"
+            android:paddingEnd="@dimen/spacing_16"
+            android:layout_marginBottom="@dimen/spacing_8">
+
+            <LinearLayout
+                android:id="@+id/layout_topic_chips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Chip 1: Albert Einstein -->
+                <TextView
+                    android:id="@+id/chip_einstein"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/chip_height"
+                    android:gravity="center"
+                    android:background="@drawable/bg_chip_normal"
+                    android:paddingStart="@dimen/spacing_12"
+                    android:paddingEnd="@dimen/spacing_12"
+                    android:layout_marginEnd="@dimen/spacing_8"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="12sp"
+                    android:textColor="@color/primary_text"
+                    android:text="Albert Einstein"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <!-- Chip 2: Solar system -->
+                <TextView
+                    android:id="@+id/chip_solar_system"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/chip_height"
+                    android:gravity="center"
+                    android:background="@drawable/bg_chip_normal"
+                    android:paddingStart="@dimen/spacing_12"
+                    android:paddingEnd="@dimen/spacing_12"
+                    android:layout_marginEnd="@dimen/spacing_8"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="12sp"
+                    android:textColor="@color/primary_text"
+                    android:text="Solar system"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <!-- Chip 3: Quantum mechanics -->
+                <TextView
+                    android:id="@+id/chip_quantum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/chip_height"
+                    android:gravity="center"
+                    android:background="@drawable/bg_chip_normal"
+                    android:paddingStart="@dimen/spacing_12"
+                    android:paddingEnd="@dimen/spacing_12"
+                    android:layout_marginEnd="@dimen/spacing_8"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="12sp"
+                    android:textColor="@color/primary_text"
+                    android:text="Quantum mechanics"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <!-- Chip 4: Theory of relativity -->
+                <TextView
+                    android:id="@+id/chip_relativity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/chip_height"
+                    android:gravity="center"
+                    android:background="@drawable/bg_chip_normal"
+                    android:paddingStart="@dimen/spacing_12"
+                    android:paddingEnd="@dimen/spacing_12"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="12sp"
+                    android:textColor="@color/primary_text"
+                    android:text="Theory of relativity"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- Dual-Tab Navigation: Search Results vs 8-Step Engine Inspector -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tab_height"
+            android:layout_marginStart="@dimen/spacing_16"
+            android:layout_marginEnd="@dimen/spacing_16"
+            android:background="@drawable/bg_segmented_container"
+            android:padding="2dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tab_results"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/bg_segment_active"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="13sp"
+                android:textColor="@color/white"
+                android:text="@string/tab_results"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <TextView
+                android:id="@+id/tab_inspector"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/bg_segment_inactive"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="13sp"
+                android:textColor="@color/secondary_text"
+                android:text="@string/tab_inspector"
+                android:clickable="true"
+                android:focusable="true" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/spacing_8"
+            android:background="@color/border_separator" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Main Content with Pull-To-Refresh -->
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefresh"
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/progressBar">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <WebView
-            android:id="@+id/webView"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+            <!-- Tab 1: Search Results List -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_results"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/spacing_8"
+                android:paddingBottom="@dimen/spacing_24"
+                android:clipToPadding="false"
+                android:visibility="gone"
+                tools:listitem="@layout/item_search_result"
+                tools:visibility="visible" />
+
+            <!-- Tab 2: 8-Step Engine Inspector List -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_inspector"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/spacing_8"
+                android:paddingBottom="@dimen/spacing_24"
+                android:clipToPadding="false"
+                android:visibility="gone"
+                tools:listitem="@layout/item_inspector_step" />
+
+            <!-- Initial / Welcome State -->
+            <LinearLayout
+                android:id="@+id/layout_state_initial"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_32">
+
+                <ImageView
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:src="@drawable/ic_wiki_logo"
+                    android:contentDescription="@string/app_name" />
+
+                <TextView
+                    style="@style/TextAppearance.WikiSearch.ArticleTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_16"
+                    android:text="@string/initial_title" />
+
+                <TextView
+                    style="@style/TextAppearance.WikiSearch.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_8"
+                    android:gravity="center"
+                    android:text="@string/initial_subtitle" />
+            </LinearLayout>
+
+            <!-- Loading Shimmer / Progress State -->
+            <LinearLayout
+                android:id="@+id/layout_state_loading"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_24"
+                android:visibility="gone">
+
+                <ProgressBar
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:indeterminateTint="@color/primary_accent" />
+
+                <TextView
+                    android:id="@+id/text_loading_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_16"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="15sp"
+                    android:textColor="@color/secondary_text"
+                    android:text="@string/status_searching" />
+
+                <TextView
+                    android:id="@+id/text_loading_subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_8"
+                    android:gravity="center"
+                    android:fontFamily="sans-serif"
+                    android:textSize="12sp"
+                    android:textColor="@color/tertiary_text"
+                    android:text="@string/server_waking_up" />
+            </LinearLayout>
+
+            <!-- Empty Results State -->
+            <LinearLayout
+                android:id="@+id/layout_state_empty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_32"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/TextAppearance.WikiSearch.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_results_title" />
+
+                <TextView
+                    style="@style/TextAppearance.WikiSearch.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_8"
+                    android:gravity="center"
+                    android:text="@string/no_results_subtitle" />
+            </LinearLayout>
+
+            <!-- Error State with Retry -->
+            <LinearLayout
+                android:id="@+id/layout_state_error"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_32"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/TextAppearance.WikiSearch.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/error_title"
+                    android:textColor="@color/error_foreground" />
+
+                <TextView
+                    android:id="@+id/text_error_detail"
+                    style="@style/TextAppearance.WikiSearch.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_8"
+                    android:gravity="center"
+                    tools:text="Failed to connect to search engine." />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_retry_search"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_16"
+                    android:backgroundTint="@color/primary_accent"
+                    android:text="@string/error_retry"
+                    android:textColor="@color/white"
+                    app:cornerRadius="@dimen/corner_radius_pill" />
+            </LinearLayout>
+
+        </FrameLayout>
+
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

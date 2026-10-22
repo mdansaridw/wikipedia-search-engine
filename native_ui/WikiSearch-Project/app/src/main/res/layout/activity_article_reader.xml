@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/screen_background">
+
+    <!-- Top App Bar / Header -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/screen_background"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_article"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:navigationContentDescription="@string/article_reader_title"
+            app:title=""
+            app:contentInsetStartWithNavigation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/spacing_16">
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    style="@style/TextAppearance.WikiSearch.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="@string/article_reader_title" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_open_browser"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/open_in_wikipedia"
+                    android:textColor="@color/primary_accent"
+                    app:icon="@drawable/ic_open_in_browser"
+                    app:iconTint="@color/primary_accent" />
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/border_separator" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Main Content Frame -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- Scrollable Article Reader Body -->
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll_article"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/spacing_20"
+                android:paddingEnd="@dimen/spacing_20"
+                android:paddingTop="@dimen/spacing_24"
+                android:paddingBottom="@dimen/spacing_40">
+
+                <!-- Article Headline Title -->
+                <TextView
+                    android:id="@+id/text_article_title"
+                    style="@style/TextAppearance.WikiSearch.ArticleTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Solar System" />
+
+                <!-- Metadata Row: Reading Time, Doc ID -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/spacing_12"
+                    android:layout_marginBottom="@dimen/spacing_20">
+
+                    <TextView
+                        android:id="@+id/text_article_reading_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_pill_badge"
+                        android:paddingStart="@dimen/spacing_12"
+                        android:paddingEnd="@dimen/spacing_12"
+                        android:paddingTop="@dimen/spacing_4"
+                        android:paddingBottom="@dimen/spacing_4"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="12sp"
+                        android:textColor="@color/primary_accent"
+                        tools:text="4 min read · 9,671 words" />
+
+                    <TextView
+                        android:id="@+id/text_article_doc_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_8"
+                        android:background="@drawable/bg_pill_badge"
+                        android:paddingStart="@dimen/spacing_12"
+                        android:paddingEnd="@dimen/spacing_12"
+                        android:paddingTop="@dimen/spacing_4"
+                        android:paddingBottom="@dimen/spacing_4"
+                        android:fontFamily="monospace"
+                        android:textSize="12sp"
+                        android:textColor="@color/secondary_text"
+                        tools:text="Doc ID: #364" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/border_separator"
+                    android:layout_marginBottom="@dimen/spacing_20" />
+
+                <!-- Article Text -->
+                <TextView
+                    android:id="@+id/text_article_body"
+                    style="@style/TextAppearance.WikiSearch.ArticleBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textIsSelectable="true"
+                    tools:text="The Solar System is a gravitationally bound system of objects that are held together by gravity, with the Sun in the center. The Sun is a huge ball of hot glowing gas that generates heat and light through nuclear fusion.\n\nEight planets orbit around the Sun: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune." />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <!-- Loading State -->
+        <LinearLayout
+            android:id="@+id/layout_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_24">
+
+            <ProgressBar
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:indeterminateTint="@color/primary_accent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_16"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="15sp"
+                android:textColor="@color/secondary_text"
+                android:text="@string/loading_article" />
+        </LinearLayout>
+
+        <!-- Error State -->
+        <LinearLayout
+            android:id="@+id/layout_error"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_32"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/text_error_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="16sp"
+                android:textColor="@color/error_foreground"
+                tools:text="Failed to load article from search engine." />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_retry"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_16"
+                android:backgroundTint="@color/primary_accent"
+                android:text="@string/error_retry"
+                android:textColor="@color/white"
+                app:cornerRadius="@dimen/corner_radius_pill" />
+        </LinearLayout>
+
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

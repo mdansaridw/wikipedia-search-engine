@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark Theme Color Tokens: Mint & Graphite -->
+    <color name="screen_background">#151A19</color>
+    <color name="primary_surface">#202725</color>
+    <color name="secondary_surface">#28312E</color>
+    <color name="primary_accent">#7CC8B2</color>
+    <color name="pressed_accent">#9BD9C6</color>
+    <color name="soft_mint">#2E4840</color>
+    <color name="primary_text">#EDF4F0</color>
+    <color name="secondary_text">#B1C0B8</color>
+    <color name="tertiary_text">#899991</color>
+    <color name="border_separator">#36423D</color>
+    <color name="success_background">#254437</color>
+    <color name="success_foreground">#8BD6AE</color>
+    <color name="error_background">#482D30</color>
+    <color name="error_foreground">#FFB4AB</color>
+    <color name="warning_background">#493D29</color>
+    <color name="warning_foreground">#F0C879</color>
+
+    <!-- 8-Step Engine Inspector Accent System (Dark Theme) -->
+    <color name="step1_badge_bg">#182B3D</color>
+    <color name="step1_fg">#7ABEFF</color>
+
+    <color name="step2_badge_bg">#29213D</color>
+    <color name="step2_fg">#B69BF5</color>
+
+    <color name="step3_badge_bg">#183325</color>
+    <color name="step3_fg">#7ED4A7</color>
+
+    <color name="step4_badge_bg">#22253D</color>
+    <color name="step4_fg">#9DA5F5</color>
+
+    <color name="step5_badge_bg">#382C17</color>
+    <color name="step5_fg">#F2BE6B</color>
+
+    <color name="step6_badge_bg">#3D1924</color>
+    <color name="step6_fg">#F58CA8</color>
+
+    <color name="step7_badge_bg">#173238</color>
+    <color name="step7_fg">#76D2E0</color>
+
+    <color name="step8_badge_bg">#17332C</color>
+    <color name="step8_fg">#75D4C0</color>
+
+    <!-- Interactive & Common Colors -->
+    <color name="ripple_light">#267CC8B2</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>

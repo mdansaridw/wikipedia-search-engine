@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Spacing Scale: 4dp and 8dp increments -->
+    <dimen name="spacing_2">2dp</dimen>
+    <dimen name="spacing_4">4dp</dimen>
+    <dimen name="spacing_6">6dp</dimen>
+    <dimen name="spacing_8">8dp</dimen>
+    <dimen name="spacing_12">12dp</dimen>
+    <dimen name="spacing_16">16dp</dimen>
+    <dimen name="spacing_20">20dp</dimen>
+    <dimen name="spacing_24">24dp</dimen>
+    <dimen name="spacing_32">32dp</dimen>
+    <dimen name="spacing_40">40dp</dimen>
+
+    <!-- Corner Radii -->
+    <dimen name="corner_radius_card">16dp</dimen>
+    <dimen name="corner_radius_pill">999dp</dimen>
+    <dimen name="corner_radius_chip">12dp</dimen>
+    <dimen name="corner_radius_badge">8dp</dimen>
+
+    <!-- Touch Targets & Heights -->
+    <dimen name="min_touch_target">48dp</dimen>
+    <dimen name="search_box_height">52dp</dimen>
+    <dimen name="tab_height">44dp</dimen>
+    <dimen name="chip_height">36dp</dimen>
+</resources>

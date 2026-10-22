@@ -1,3 +1,78 @@
 <resources>
     <string name="app_name">WikiSearch</string>
+    <string name="app_tagline">Wikipedia Search Engine</string>
+
+    <!-- Search UI -->
+    <string name="search_hint">Search Wikipedia articles…</string>
+    <string name="clear_search">Clear search query</string>
+    <string name="mode_keyword">BM25 Keywords</string>
+    <string name="mode_phrase">Exact Phrase</string>
+    <string name="tab_results">Search Results</string>
+    <string name="tab_inspector">8-Step Engine Inspector</string>
+
+    <!-- Status & Metrics -->
+    <string name="status_ready">Ready</string>
+    <string name="status_searching">Searching…</string>
+    <string name="status_online">Online</string>
+    <string name="status_error">Connection Error</string>
+    <string name="latency_hits_format">⚡ %.1f ms · %,d hits</string>
+    <string name="pipeline_latency_format">⚡ Total Pipeline: %.2f ms</string>
+    <string name="score_format">Score: %.2f</string>
+    <string name="rank_format">#%d</string>
+
+    <!-- Empty and Error States -->
+    <string name="initial_title">Explore Wikipedia</string>
+    <string name="initial_subtitle">Search millions of Wikipedia articles powered by custom inverted index &amp; Okapi BM25 scoring.</string>
+    <string name="no_results_title">No articles found</string>
+    <string name="no_results_subtitle">Try searching for broader keywords, checking spelling, or switching search modes.</string>
+    <string name="error_title">Search Failed</string>
+    <string name="error_retry">Retry</string>
+    <string name="server_waking_up">Connecting to search engine… If cold-started, the server may take a few seconds to wake up.</string>
+
+    <!-- Article Reader -->
+    <string name="article_reader_title">Article Reader</string>
+    <string name="open_in_wikipedia">Open in Wikipedia</string>
+    <string name="reading_time_format">%d min read · %,d words</string>
+    <string name="doc_id_format">Doc ID: #%d</string>
+    <string name="loading_article">Loading full article…</string>
+
+    <!-- Stats Bottom Sheet -->
+    <string name="stats_title">Search Engine Statistics</string>
+    <string name="stats_total_articles">Total Articles</string>
+    <string name="stats_vocabulary_size">Vocabulary Size</string>
+    <string name="stats_hit_at_10">Hit@10</string>
+    <string name="stats_mrr">Mean Reciprocal Rank</string>
+    <string name="stats_p50">p50 Latency</string>
+    <string name="stats_p95">p95 Latency</string>
+    <string name="stats_compression">Compression Savings</string>
+    <string name="stats_index_size">Total Index Size</string>
+    <string name="stats_refresh">Refresh Stats</string>
+
+    <!-- Settings Dialog -->
+    <string name="settings_title">Engine Settings</string>
+    <string name="settings_backend_section">Backend Search Engine URL</string>
+    <string name="backend_cloud">Cloud Server (Default)</string>
+    <string name="backend_local">Custom / Local Development</string>
+    <string name="test_connection">Test Connection</string>
+    <string name="testing_connection">Testing…</string>
+    <string name="test_success">Connected successfully (%.0f ms)</string>
+    <string name="test_failure">Failed: %s</string>
+    <string name="settings_theme_section">Appearance &amp; Theme</string>
+    <string name="theme_system">System Default</string>
+    <string name="theme_light">Light Theme</string>
+    <string name="theme_dark">Dark Theme</string>
+    <string name="settings_save">Save Settings</string>
+    <string name="settings_cancel">Cancel</string>
+
+    <!-- Inspector Steps -->
+    <string name="step1_name">Tokenizer</string>
+    <string name="step2_name">Lexicon</string>
+    <string name="step3_name">Compression</string>
+    <string name="step4_name">Phrase Intersection</string>
+    <string name="step5_name">BM25 Scoring</string>
+    <string name="step6_name">Min-Heap</string>
+    <string name="step7_name">Document Store</string>
+    <string name="step8_name">Snippet Generation</string>
+
+    <string name="not_provided">Not provided by the backend.</string>
 </resources>
