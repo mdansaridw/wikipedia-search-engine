@@ -190,6 +190,8 @@
   },
   "active": "d8a9dea30f4924f4",
   "lastOpenFiles": [
+    "render.yaml",
+    "requirements.txt",
     "README.md",
     "start_server.py",
     "mobile/android/gradle.properties",
@@ -200,7 +202,6 @@
     "mobile/android/app/src/main/res/values/colors.xml",
     "mobile/android/app/src/main/res/values/strings.xml",
     "mobile/android/app/src/main/res/values",
-    "mobile/android/app/src/main/res/layout/activity_main.xml",
     "HACKATHON_MASTER.md",
     "BENCHMARK_REPORT.md",
     "AGENTS.md",

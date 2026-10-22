@@ -44,20 +44,20 @@ jobs:
       - name: Publish Public GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v1.0.0
-          name: "WikiSearch Android APK v1.0.0"
+          tag_name: v1.0.1
+          name: "WikiSearch Android APK v1.0.1 (Cloud & Local Enabled)"
           body: |
             ## 🏆 Wikipedia Local Search Engine (HCL Hackathon)
             
-            Installable Android APK connecting to the custom BM25 & exact-phrase local search engine.
+            Installable Android APK connecting to both Cloud-Hosted and Local Wi-Fi BM25 & exact-phrase search engine.
             
             ### 📱 Download & Run:
             1. Download **`WikiSearch.apk`** below directly onto your Android device or emulator.
-            2. Connect your phone to the same Wi-Fi as your backend laptop.
-            3. On your laptop, run:
-               ```bash
-               python start_server.py
-               ```
+            2. By default, it connects to the cloud backend on Render.
+            3. Tap the **Settings** gear icon anytime to switch to your laptop's local Wi-Fi IP (e.g. `http://<laptop-ip>:8000`).
+          draft: false
+          prerelease: false
+          files: WikiSearch.apk
             4. Open **WikiSearch** on your phone. If prompted, confirm your laptop's local IP (e.g. `http://<laptop-ip>:8000`).
           draft: false
           prerelease: false

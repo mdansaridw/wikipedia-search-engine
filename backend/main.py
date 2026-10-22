@@ -41,7 +41,23 @@ engine: Optional[SearchEngine] = None
 @app.on_event("startup")
 def startup_event():
     global engine
-    index_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "index_data")
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    index_dir = os.path.join(base_dir, "index_data")
+    postings_path = os.path.join(index_dir, "postings.bin")
+    
+    # Auto-build index if deploying on fresh cloud instance (e.g. Render)
+    if not os.path.exists(postings_path):
+        print("Index not found on disk. Initializing auto-build for cloud deployment...")
+        parquet_path = os.path.join(base_dir, "data", "simplewiki.parquet")
+        if not os.path.exists(parquet_path):
+            from data.fast_downloader import DATASET_URL, parallel_download
+            os.makedirs(os.path.dirname(parquet_path), exist_ok=True)
+            parallel_download(DATASET_URL, parquet_path, 8)
+            
+        from engine.indexer import IndexBuilder
+        builder = IndexBuilder(parquet_path, index_dir)
+        builder.build_index()
+        
     engine = SearchEngine(index_dir)
 
 
@@ -387,5 +403,6 @@ def mobile_web_app():
 
 if __name__ == "__main__":
     import uvicorn
-    # Listen on all local interfaces so any device on Wi-Fi can connect
-    uvicorn.run("backend.main:app", host="0.0.0.0", port=8000, reload=False)
+    port = int(os.environ.get("PORT", 8000))
+    # Listen on all local interfaces so any device on Wi-Fi or cloud can connect
+    uvicorn.run("backend.main:app", host="0.0.0.0", port=port, reload=False)

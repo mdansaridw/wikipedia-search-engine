@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private SwipeRefreshLayout swipeRefresh;
     private SharedPreferences prefs;
     private static final String PREF_SERVER_URL = "server_url";
-    private static final String DEFAULT_SERVER_URL = "http://10.0.2.2:8000"; // Default for emulator; physical phone uses 192.168.X.X
+    private static final String DEFAULT_SERVER_URL = "https://wikipedia-search-engine.onrender.com"; // Cloud hosted backend on Render (or switch to local Wi-Fi via gear icon)
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
