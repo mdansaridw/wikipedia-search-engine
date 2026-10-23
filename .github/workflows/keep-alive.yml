@@ -1,0 +1,23 @@
+name: Render Keep-Alive Uptime Ping
+
+on:
+  schedule:
+    # Run every 10 minutes to prevent Render free-tier from sleeping (15-min timeout)
+    - cron: '*/10 * * * *'
+  workflow_dispatch: # Allows manual trigger anytime from GitHub Actions tab
+
+jobs:
+  keep-alive:
+    name: Ping Render Cloud Service
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Keep-Alive HTTP Ping
+        run: |
+          echo "Pinging Render live backend..."
+          STATUS=$(curl -s -L -o /dev/null -w "%{http_code}" --max-time 45 "https://wikipedia-search-engine-55an.onrender.com/api/stats")
+          echo "Response HTTP Status Code: $STATUS"
+          if [ "$STATUS" -ge 200 ] && [ "$STATUS" -lt 400 ]; then
+            echo "Render service is awake and healthy!"
+          else
+            echo "Warning: Received status $STATUS (service may be cold starting)"
+          fi

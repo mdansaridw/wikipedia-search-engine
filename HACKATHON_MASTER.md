@@ -67,6 +67,7 @@ Build a local Wikipedia search engine from scratch:
     8. Dynamic Snippet Extractor & Term Highlighting (160-char sliding window density snapping)
   - Responsive mobile web interface with dark mode, live latency badges ("⚡ 3.4ms"), dynamic snippet highlights, and full article reader.
   - Automated GitHub Actions build workflow packages the code into an installable `WikiSearch.apk` with dynamic versioning (`v1.0.${{ github.run_number }}`) and auto-publishes to GitHub Releases.
+  - **Uptime Keep-Alive System**: Automated GitHub Actions cron workflow (`.github/workflows/keep-alive.yml`) runs every 10 minutes to ping `/api/stats`, preventing Render's free tier from sleeping (15-min timeout) and eliminating cold-start latency for judges. Local Python daemon provided in `scripts/keep_alive.py`.
 - **Step 8 (Automated Benchmarking & Honest Numbers Rig)**: **Method 1 — Integrated One-Click Benchmark CLI (`python benchmark.py`)**.
   - Evaluates 100 ground-truth Wikipedia test queries for **Hit@10** and **MRR (Mean Reciprocal Rank)**.
   - Captures microsecond-resolution query latency distributions, calculating exact **p50 and p95 latency**.
